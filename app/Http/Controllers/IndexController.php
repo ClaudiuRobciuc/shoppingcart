@@ -11,12 +11,9 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $sessionId = Session::getId();
-        $cartProducts = CartModel::getTotalProducts($sessionId);
         $products = FruitModel::get();
         return view('pages.index',[
             'products' => $products,
-            'cartProducts' => $cartProducts
         ]);
     }
 
