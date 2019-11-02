@@ -15,7 +15,7 @@
             @foreach($cartProducts as $row) 
                 <tr>
                     <td>
-                        <p><strong>{{ $row->fruit->name }}</strong> <a id="removeItem" data-id="{{ $row->id }}" href="javascript:;" class="btn btn-danger">X</a></p>
+                        <p><strong>{{ $row->fruit->name }}</strong> <a data-id="{{ $row->id }}" href="javascript:;" class=" btn delete-btn btn-danger">X</a></p>
                     </td>
                     <td>{{ $row->amount }}</td>
                     <td>{{ $row->price }}</td>
@@ -60,7 +60,7 @@
 
 @section('scripts')
 <script>
-    $( "#removeItem" ).click(function() {
+    $('body').on('click', '.delete-btn', function() {
         id = $(this).attr('data-id');
         $('#rowId').val(id);
         $('#removeItemForm').submit();
