@@ -11,6 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => 'frontpage.index',
+    'uses' => 'IndexController@index',
+]);
+
+Route::post('/addtocart/{id}', [
+    'as' => 'frontpage.product.addToCart',
+    'uses' => 'IndexController@addToCart',
+]);
+
+Route::get('/shoppingcart', [
+    'as' => 'frontpage.shop.index',
+    'uses' => 'ShopController@index',
+]);
+
+Route::post('/pay', [
+    'as' => 'frontpage.shop.buyCart',
+    'uses' => 'ShopController@buyCart',
+]);
+
+Route::post('/remove', [
+    'as' => 'frontpage.shop.removeItem',
+    'uses' => 'ShopController@removeItem',
+]);
